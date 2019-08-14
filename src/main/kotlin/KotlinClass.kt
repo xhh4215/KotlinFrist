@@ -89,8 +89,47 @@ abstract class Animated {
     }
 }
 
+/***
+ * 在java中在一个类中声明一个类默认的会变成这个类的内部类
+ * 内部类对象隐式的包含了外部类的引用
+ */
 interface State : Serializable
+
 interface View {
     fun getCurrentState(): State
     fun restoreState(state: State)
+}
+
+class ButtonTwo : View {
+    override fun restoreState(state: State) {
+
+    }
+
+    override fun getCurrentState(): State = ButtonState()
+
+    /***
+     * 在A类中声明一个类B       在Java中          在Kotlin中
+     *  嵌套类                 static class A    class A
+     *  内部类                 class A           inner Class A
+     * 这个类与java的静态内部类相似  嵌套类不持有外部类的引用而内部类持有
+     * 在kotlin中使用this@外部类名称访问外部类
+     */
+    class ButtonState : State {
+
+    }
+}
+
+/***
+ * sealed类为父类添加一个sealed修饰符，对可能创建的子类作出严格的限制，所有的直接子类必须嵌套在父类中
+ */
+//将基类标记为密封类
+sealed class MyExpr{
+    class Num(val value:Int):MyExpr()
+    class Sum(val left:Expr,val right:Expr):MyExpr()
+}
+fun eavl(e:MyExpr){
+    when(e){
+        is MyExpr.Num -> e.value
+        is MyExpr.Sum -> eval(e.right)+ eval(e.left)
+    }
 }
