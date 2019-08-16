@@ -1,4 +1,6 @@
 import java.io.Serializable
+import javax.naming.Context
+import javax.swing.text.AttributeSet
 
 /**
  * @funcation 实现的是对kotlin的类的学习
@@ -123,13 +125,95 @@ class ButtonTwo : View {
  * sealed类为父类添加一个sealed修饰符，对可能创建的子类作出严格的限制，所有的直接子类必须嵌套在父类中
  */
 //将基类标记为密封类
-sealed class MyExpr{
-    class Num(val value:Int):MyExpr()
-    class Sum(val left:Expr,val right:Expr):MyExpr()
+sealed class MyExpr {
+    class Num(val value: Int) : MyExpr()
+    class Sum(val left: Expr, val right: Expr) : MyExpr()
 }
-fun eavl(e:MyExpr){
-    when(e){
+
+fun eavl(e: MyExpr) {
+    when (e) {
         is MyExpr.Num -> e.value
-        is MyExpr.Sum -> eval(e.right)+ eval(e.left)
+        is MyExpr.Sum -> eval(e.right) + eval(e.left)
+    }
+}
+//声明一个带非默认构造方法或者属性的类
+/***
+ * 这段被括号括起来的语句叫做主构造方法
+ *  - 表明构造方法的参数
+ *  - 定义使用这些参数初始化属性
+ *  val 意味着相应的属性会使用构造方法的参数来初始化
+ */
+open class User(val nickname: String)
+
+/***
+ * 带一个参数的主构造方法
+ */
+class Users constructor(_nickname: String) {
+    //声明一个属性
+    val nickname: String
+
+    /****
+     * 在init{} 中进行初始化的语句
+     *  -init是用来引入一个初始化语句的
+     *  可以在一个类中声明多个init块
+     */
+    init {
+        nickname = _nickname
+    }
+}
+
+/***
+ * 类中的属性的声明不一定要在init块中
+ */
+class Userss(_nickname: String) {
+    val nickname = _nickname
+}
+
+/***
+ * 在继承一个类的时候，主构造器同样要初始化父类，可以通过在基类列表的父类引用中提供父类构造器参数
+ * 的方式来实现这一点
+ */
+class TwitterUser(nickname: String):User(nickname){
+
+}
+
+/***
+ * 该类声明了两个从构造方法  从构造器使用constructor关键字引出
+ *
+ */
+open class TextView{
+    constructor(ctx:Context){
+        //some code
+    }
+    constructor(ctx:Context,attr:Int){
+          //come code
+
+    }}
+
+/***
+ * 使用super关键字来调用父类的构造器
+ */
+class MyButton :TextView{
+    constructor(ctx: Context):super(ctx){
+
+
+    }
+    constructor(ctx: Context,attr: Int):super(ctx,attr){
+
+    }
+}
+
+/***
+ * - 使用this关键字从一个构造方法中调用你自己的类中的另外一个构造方法
+ * - 修改MyImageButton；类使得一个构造方法委托给了同一个类中的另外一个构造方法（使用this） 传入参数为默认值
+ * - 如果没有主构造方法，每个构造方法必须初始化基类或者是委托给另一个这样的构造方法
+ * */
+class MyImageButton:TextView{
+    constructor(ctx: Context):this(ctx,1){
+
+
+    }
+    constructor(ctx: Context,attr: Int):super(ctx,attr){
+
     }
 }
