@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="910f7e2e-0da6-4347-ba0d-2e27ce51a11c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/KotlinAssociated.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/KotlinLambda.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/DataClass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/KotlinDataClass.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -26,18 +27,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinBase.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3855">
-              <caret line="259" column="18" selection-start-line="259" selection-start-column="18" selection-end-line="259" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#103#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinFunction.kt">
           <provider selected="true" editor-type-id="text-editor">
@@ -69,10 +58,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/DataClass.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinDataClass.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
+            <state relative-caret-position="316">
               <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinLambda.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinAssociated.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="111" />
+            <state relative-caret-position="353">
+              <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -151,6 +152,7 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/DataClass.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/KotlinObject.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/KotlinAssociated.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/KotlinLambda.kt" />
       </list>
     </option>
   </component>
@@ -235,19 +237,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Kotlin.KotlinAssociatedKt">
-    <configuration name="DataClassKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
-      <module name="KotlinProject.main" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" value="DataClassKt" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="KotlinAssociatedKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
       <module name="KotlinProject.main" />
       <option name="VM_PARAMETERS" />
@@ -269,6 +258,19 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" value="KotlinClassKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KotlinDataClassKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="KotlinProject.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="KotlinDataClassKt" />
       <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -303,7 +305,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.KotlinAssociatedKt" />
-        <item itemvalue="Kotlin.DataClassKt" />
+        <item itemvalue="Kotlin.KotlinDataClassKt" />
         <item itemvalue="Kotlin.KotlinInterfaceKt" />
         <item itemvalue="Kotlin.KotlinClassKt" />
         <item itemvalue="Kotlin.KotlinFunctionKt" />
@@ -328,7 +330,7 @@
       <workItem from="1565619479555" duration="257000" />
       <workItem from="1565750948119" duration="5705000" />
       <workItem from="1565922140969" duration="994000" />
-      <workItem from="1565924745990" duration="10852000" />
+      <workItem from="1565924745990" duration="12685000" />
     </task>
     <task id="LOCAL-00001" summary="kotlin中类的构造器的学习">
       <created>1565968580425</created>
@@ -341,13 +343,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44778000" />
+    <option name="totallyTimeSpent" value="46611000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2819063" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2819063" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -356,13 +358,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3041096" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3041096" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.329927" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.30821916" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3068493" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -475,13 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/DataClass.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinObject.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -491,8 +486,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinAssociated.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="111" />
+        <state relative-caret-position="353">
+          <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinDataClass.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="92" column="24" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/KotlinLambda.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
