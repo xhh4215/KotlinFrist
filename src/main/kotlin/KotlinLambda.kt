@@ -1,64 +1,144 @@
-import java.net.CacheResponse
-
+import data.Person
+import java.awt.Button
+fun statue() = println("Statue")
 /**
  * lambda的简介：作为函数参数的代码块
  */
-/***
- * lambda和集合
- */
 fun main() {
-    println(sum(5, 6))
-    /*****
-     * people.maxBy({p:Person3->p.age})
-     * 如果lambda是函数调用的最后一个参数 可以把它拿到括号外边
-     * people.maxBy(){p:Person3->p.age}
-     * 如果lambda是唯一的参数可以去掉调用代码中的空括号
-     * people.maxBy{p:Person3->p.age}
-     * 类型推导
-     *  people.maxBy(){p:->p.age}
-     * 使用默认参数代替命名参数
-     *  people.maxBy(){it.age}
-     *
-     *
-     */
-    print(people.maxBy { it.age })
+    println("最大年龄的人" + perple.maxBy {
+        it.name
+    })
+    println("两个数求和" + sum(12, 12))
+    val people = People("栾桂明",26,"男")
+    val age = {people:People-> people.age}
+    val age2 = people::age
+   println("age"+age+"age2"+age2)
+   println( run { ::statue })
+    val people1 = createPeople()
+    println("this is a people "+people1)
 }
 
-//基本语法
-val sum = { x: Int, y: Int -> x * y }
-val people = listOf(
-    Person3("栾桂明", 12),
-    Person3("栾桂明", 13),
-    Person3("栾桂明", 14),
-    Person3("栾桂明", 15),
-    Person3("栾桂明", 16),
-    Person3("栾桂明", 24)
-)
+/**
+ * 手动在集合中搜索
+ */
+fun findTheOlder(person: List<Person>) {
+    //存储最大年龄
+    var maxAge = 0
+//    存储最大年龄的人
+    var theOlder: Person? = null
+    for (person in person) {
+        if (person.age > maxAge) {
+            maxAge = person.age
+            theOlder = person
+        }
+    }
+}
 
-class Person3(val nickname: String, val age: Int)
+/***
+ * lambda 最初形式
+ */
+fun maxByOne(person: List<Person>) {
+    person.maxBy({ p: Person -> p.age })
+}
+
+/***
+ * 如果lambda表达式是最后一个参数，他可以放在括号的外边
+ */
+fun maxByTwo(person: List<Person>) {
+    person.maxBy() { p: Person -> p.age }
+}
+
+/***
+ * 如果lambda是唯一的一个参数那圆括号可以不写
+ */
+fun maxByThree(person: List<Person>) {
+    person.maxBy { p: Person -> p.age }
+}
+
+/***
+ * 参数的类型可以自动推导
+ */
+fun maxByFour(person: List<Person>) {
+    person.maxBy { p -> p.age }
+}
+
+/***
+ * 使用it代替命名参数
+ */
+fun maxByFive(person: List<Person>) {
+    person.maxBy {
+        println("这是lambda表达式的使用")
+        it.age
+    }
+    //成员引用和调用该函数的lambda 的表达式具有相同的类型因此可以互换
+    // people.maxBy{People.age}
+}
 
 /**
- * 在函数内部使用lambda表达式可以访问这个函数的参数和lambda之前定义的局部变量
- * foreach所做的就是将集合中的每一个元素都调用给指定的lambda
- * kotlin可以在lambda内部访问非final变量甚至修改他
+ * 使用lambda表达式获取最大值
  */
-//在lambda中访问类中的变量
-fun printlnMessage(message: Collection<String>, prefix: String) {
-    message.forEach {
+val perple = listOf(Person("Alice", 29), Person("Bob", 30))
+/***
+ * lambda的基本语法
+ * {param:Type,param:Type-> fun name(x,y)}
+ */
+
+//调用保存在变量中的lambda表达式
+val sum = { x: Int, y: Int -> x + y }
+
+/***
+ * 在函数的内部声明一个匿名内部类的时候，能够引用这个函数的参数个局部变量
+ * 在lambda可以做同样的事
+ * action<T> 是一个参数为string 类型的函数
+ * action<T> -> Unit
+ *
+ */
+fun printlnMessage(messages: Collection<String>, prefix: String) {
+    //在lambda中访问prefix 参数
+    messages.forEach {
         println("$prefix $it")
     }
 }
-//在lambda中修改类中的变量
-fun printlnProblemCount(response: Collection<String>) {
-    var centError = 0
+
+/****
+ * it代表传入的lambda的执行的函数的参数
+ * 一般情况下变量的生命周期被限制在声明的函数的内部，但是如果这个变量被
+ * lambda捕获就可以存储稍后执行
+ */
+fun printlnProblemCounts(response: Collection<String>) {
+    var clientError = 0
     var serverError = 0
     response.forEach {
-
-        if (it.startsWith("4")){
-            centError++
-        }else if(it.endsWith("5")){
-             serverError++
+        if (it.startsWith("4")) {
+            clientError++
+        } else if (it.startsWith("5")) {
+            serverError++
         }
     }
+}
+
+/****
+ * 如果lambda表达式被用作事件处理器或者是其他的一步操作的执行情况 对
+ * 变量的修改只会在lambda执行的时候发生
+ */
+fun tryToCountButtonClicks(button: Button): Int {
+    var clicks = 0
+//    button.onCLick { clicks++ }
+    return clicks
+}
+/***
+ * 成员引用 可以把函数转化为一个值来传递
+ * 语法 类名 :: 成员
+ * 成员引用和调用该函数的lambda 的表达式具有相同的类型因此可以互换
+ */
+ data class People(val name:String,val age:Int,val gender:String)
+
+/***
+ * 可以使用构造方法引用存储或者是延迟执行创建类实例的动作，构造方法引用形式是双引号后加类名称
+ */
+fun createPeople():People{
+    val create = ::People
+    val p = create("小黑",26,"男")
+    return p
 
 }

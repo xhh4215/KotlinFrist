@@ -1,6 +1,5 @@
 import java.io.Serializable
 import javax.naming.Context
-import javax.swing.text.AttributeSet
 
 /**
  * @funcation 实现的是对kotlin的类的学习
