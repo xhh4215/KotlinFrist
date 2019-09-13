@@ -131,7 +131,7 @@ fun tryToCountButtonClicks(button: Button): Int {
  * 语法 类名 :: 成员
  * 成员引用和调用该函数的lambda 的表达式具有相同的类型因此可以互换
  */
- data class People(val name:String,val age:Int,val gender:String)
+ data class People(  val name:String,val age:Int,val gender:String)
 
 /***
  * 可以使用构造方法引用存储或者是延迟执行创建类实例的动作，构造方法引用形式是双引号后加类名称
