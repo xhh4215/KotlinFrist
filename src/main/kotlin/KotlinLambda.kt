@@ -1,5 +1,9 @@
 import data.Person
 import java.awt.Button
+import java.awt.CompositeContext
+import java.lang.StringBuilder
+import javax.naming.Context
+
 fun statue() = println("Statue")
 /**
  * lambda的简介：作为函数参数的代码块
@@ -9,13 +13,14 @@ fun main() {
         it.name
     })
     println("两个数求和" + sum(12, 12))
-    val people = People("栾桂明",26,"男")
-    val age = {people:People-> people.age}
+    val people = People("栾桂明", 26, "男")
+    val age = { people: People -> people.age }
     val age2 = people::age
-   println("age"+age+"age2"+age2)
-   println( run { ::statue })
+    println("age" + age + "age2" + age2)
+    println(run { ::statue })
     val people1 = createPeople()
-    println("this is a people "+people1)
+    println("this is a people " + people1)
+    println(alphabet())
 }
 
 /**
@@ -126,19 +131,45 @@ fun tryToCountButtonClicks(button: Button): Int {
 //    button.onCLick { clicks++ }
     return clicks
 }
+
 /***
  * 成员引用 可以把函数转化为一个值来传递
  * 语法 类名 :: 成员
  * 成员引用和调用该函数的lambda 的表达式具有相同的类型因此可以互换
  */
- data class People(  val name:String,val age:Int,val gender:String)
+data class People(val name: String, val age: Int, val gender: String)
 
 /***
  * 可以使用构造方法引用存储或者是延迟执行创建类实例的动作，构造方法引用形式是双引号后加类名称
  */
-fun createPeople():People{
+fun createPeople(): People {
     val create = ::People
-    val p = create("小黑",26,"男")
+    val p = create("小黑", 26, "男")
     return p
 
 }
+
+/***
+ * 带接受者的lambda with和apply
+ * with:是一个接受两个参数的函数他把他的第一个参数转化作为第二个参数传个lambda内的接收者
+ * 返回的是lambda 的执行结果
+ */
+fun alphabet() = with(StringBuilder()) {
+    for (letter in 'a'..'z') {
+        append(letter)
+    }
+    append(" Now I Konw This Is A Alphabet")
+    toString()
+}
+
+/***
+ *  * with:是一个接受两个参数的函数他把他的第一个参数转化作为第二个参数传个lambda内的接收者
+ * 返回的是接收者对象 的执行结果
+ */
+fun alphabet1() = StringBuilder().apply {
+    for (letter in 'A'..'Z') {
+        append(letter)
+        append(" Now I Konw This Is A Alphabet")
+
+    }
+}.toString()
